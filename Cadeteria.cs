@@ -27,10 +27,10 @@ public class EspacioCadeteria
         
     }
 
-    public string Informe(float total, int cantidad)
-    {
+    // public string Informe(float total, int cantidad)
+    // {
 
 
         
-    }
+    // }
 }
