@@ -21,12 +21,16 @@ public class EspacioCadeteria
     public List<Cadete>? ListadoCadetes { get => listadoCadetes; set => listadoCadetes = value; }
 
     
-
-    //asignar pedido
+    //metodos
     public void AsignarPedido(Pedido nuevoPedido, List<Cadete> ListadoCadetes)
     {
         
     }
 
-    //informe 
+    public string Informe(float total, int cantidad)
+    {
+
+
+        
+    }
 }
