@@ -2,6 +2,7 @@ namespace EspacioCadeteria;
 using EspacioCadete;
 using EspacioPedido;
 using EspacioCliente;
+using System.ComponentModel;
 
 public class EspacioCadeteria
 {
@@ -22,9 +23,36 @@ public class EspacioCadeteria
 
     
     //metodos
-    public void AsignarPedido(Pedido nuevoPedido, List<Cadete> ListadoCadetes)
+    public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, string telefono, string datosReferenciadeDireccion, int id)
     {
-        
+        Cliente clienteNuevo = new Cliente(nombre, direccion, telefono, datosReferenciadeDireccion);
+        Pedido pedidoNuevo = new Pedido(num, observacion, clienteNuevo);
+
+        AsignarPedido(pedidoNuevo, listadoCadetes, id);
+                                                                                                          
+    }
+    public void AsignarPedido(Pedido nuevoPedido, List<Cadete> ListadoCadetes, int id)
+    {
+        foreach (var cadete in ListadoCadetes)
+        {
+            if (id == cadete.Id)
+            {
+                cadete.AgregarPedido(nuevoPedido);
+            }
+        }
+    }
+
+    public void ReasignarPedido(List<Cadete> ListadoCadetes, Pedido pedidoAReasignar, int id)
+    {
+        foreach (var  cadete in ListadoCadetes)
+        {
+            if (id == cadete.Id)
+            {
+                cadete.AgregarPedido(pedidoAReasignar);
+                cadete.EliminarPedido(pedidoAReasignar, pedidoAReasignar.Numero);
+                break;
+            }
+        }
     }
 
     // public string Informe(float total, int cantidad)
