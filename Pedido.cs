@@ -1,7 +1,7 @@
 namespace EspacioPedido;
 using EspacioCliente;
 
-enum Estado
+public enum Estado
 {
     Pendiente,
     Entregado,
@@ -19,17 +19,26 @@ public class Pedido
     {
     }
 
-    public int Numero { get => numero; set => numero = value; }
-    public string? Observacion { get => observacion; set => observacion = value; }
-    public Cliente? Cliente { get => cliente; set => cliente = value; }
-    internal Estado Estado { get => estado; set => estado = value; }
-
-    public void CargarCliente(string nombre, string direccion, string telefono, string datosReferenciaDireccion)
+    public Pedido(int numero, string? observacion, Cliente? cliente)
     {
-        cliente.Nombre = nombre;
-        cliente.Direccion = direccion;
-        cliente.Telefono = telefono;
-        cliente.DatosReferenciaDireccion = datosReferenciaDireccion;
+        this.numero = numero;
+        this.observacion = observacion;
+        this.cliente = cliente;
+        this.estado = estado;
+    }
+
+    public int Numero { get => numero;}
+    public string? Observacion { get => observacion; }
+    public Estado Estado { get => estado; set => estado = value; }
+
+    public void AgregarCliente(Cliente clienteNuevo)
+    {
+        cliente = clienteNuevo;
+    }
+
+    public void EliminarCliente()
+    {
+        cliente = null;
     }
 
     public string VerDireccionCliente(Cliente cliente)
@@ -41,5 +50,4 @@ public class Pedido
     {
         return cliente.DatosReferenciaDireccion;
     } 
-      
 }
