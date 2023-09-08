@@ -47,7 +47,19 @@ public class Cadete
         }
     }
 
+    public void CambiarEstado(int numeroPedido)
+    {
+        Pedido pedidoACambiar = new Pedido();
 
+        foreach (var pedidoelegido in listaPedidos)
+        {
+            if (numeroPedido == pedidoelegido.Numero)
+            {
+                pedidoACambiar = pedidoelegido;
+                break;
+            }
+        }
+    } 
 
     public float JornalACobrar()
     {
