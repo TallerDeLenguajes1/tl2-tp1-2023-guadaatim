@@ -4,13 +4,13 @@ using EspacioPedido;
 using EspacioCliente;
 using System.ComponentModel;
 
-public class EspacioCadeteria
+public class Cadeteria
 {
     private string? nombre;
     private string? telefono;
     private List<Cadete>? listadoCadetes;
 
-    public EspacioCadeteria(string nombre, string telefono, List<Cadete> listadoCadetes)
+    public Cadeteria(string nombre, string telefono, List<Cadete> listadoCadetes)
     {
         this.listadoCadetes = listadoCadetes;
         this.nombre = nombre;
@@ -19,32 +19,32 @@ public class EspacioCadeteria
 
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-    public List<Cadete>? ListadoCadetes { get => listadoCadetes; set => listadoCadetes = value; }
+   // public List<Cadete>? ListadoCadetes { get => listadoCadetes; set => listadoCadetes = value; }
 
     
     //metodos
-    public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, string telefono, string datosReferenciadeDireccion, int id)
+    public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, int telefono, string datosReferenciadeDireccion, int idCadete)
     {
         Cliente clienteNuevo = new Cliente(nombre, direccion, telefono, datosReferenciadeDireccion);
         Pedido pedidoNuevo = new Pedido(num, observacion, clienteNuevo);
 
-        AsignarPedido(pedidoNuevo, listadoCadetes, id);
+        AsignarPedido(pedidoNuevo, idCadete);
                                                                                                           
     }
-    public void AsignarPedido(Pedido nuevoPedido, List<Cadete> ListadoCadetes, int id)
+    public void AsignarPedido(Pedido nuevoPedido, int idCadete)
     {
-        foreach (var cadete in ListadoCadetes)
+        foreach (var cadete in listadoCadetes)
         {
-            if (id == cadete.Id)
+            if (idCadete == cadete.Id)
             {
                 cadete.AgregarPedido(nuevoPedido);
             }
         }
     }
 
-    public void ReasignarPedido(List<Cadete> ListadoCadetes, Pedido pedidoAReasignar, int id)
+    public void ReasignarPedido( Pedido pedidoAReasignar, int id)
     {
-        foreach (var  cadete in ListadoCadetes)
+        foreach (var  cadete in listadoCadetes)
         {
             if (id == cadete.Id)
             {
@@ -57,8 +57,5 @@ public class EspacioCadeteria
 
     // public string Informe(float total, int cantidad)
     // {
-
-
-        
     // }
 }

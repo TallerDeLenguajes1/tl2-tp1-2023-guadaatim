@@ -29,7 +29,7 @@ public class Pedido
 
     public int Numero { get => numero;}
     public string? Observacion { get => observacion; }
-    public Estado Estado { get => estado; set => estado = value; }
+    public Estado Estado { get => estado;}
 
     public void AgregarCliente(Cliente clienteNuevo)
     {
@@ -41,13 +41,35 @@ public class Pedido
         cliente = null;
     }
 
-    public string VerDireccionCliente(Cliente cliente)
+    public string VerDireccionCliente()
     {
         return cliente.Direccion;
     }
 
-    public string VerDatosDeCliente(Cliente cliente)
+    public string VerDatosDeCliente()
     {
         return cliente.DatosReferenciaDireccion;
     } 
+
+        public void CambiarEstado()
+    {
+       
+        if (Estado == Estado.Pendiente )
+        {
+            Estado = Estado.Entregado;
+
+        } else
+        {
+           
+        }
+
+         public void CancelarPedido()
+    {
+       
+        this.Estado = Estado.Cancelado;
+
+        
+           
+        }
+    } //cancelar pedido metodo
 }
