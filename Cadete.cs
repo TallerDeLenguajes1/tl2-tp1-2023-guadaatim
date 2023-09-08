@@ -47,31 +47,7 @@ public class Cadete
         }
     }
 
-    public void CambiarEstado(int numeroPedido, int opcion)
-    {
-        Pedido pedidoACambiar = new Pedido();
 
-        foreach (var pedidoelegido in listaPedidos)
-        {
-            if (numeroPedido == pedidoelegido.Numero)
-            {
-                pedidoACambiar = pedidoelegido;
-                break;
-            }
-        }
-
-        if (pedidoACambiar.Estado == Estado.Pendiente && opcion == 1)
-        {
-            pedidoACambiar.Estado = Estado.Entregado;
-
-        } else
-        {
-            if (pedidoACambiar.Estado == Estado.Pendiente && opcion == 2)
-            {
-                pedidoACambiar.Estado = Estado.Cancelado;
-            }
-        }
-    }
 
     public float JornalACobrar()
     {
@@ -104,5 +80,5 @@ public class Cadete
     }
 }
 
-//clase hijo puedes tener el constructor de la clase padre
+//clase hijo puede tener el constructor de la clase padre
 //si no redefino el cosntructor toma el de la clase padre
