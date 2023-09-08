@@ -1,4 +1,6 @@
 namespace EspacioCadete;
+
+using System.ComponentModel;
 using EspacioPedido;
 
 public class Cadete
@@ -27,6 +29,23 @@ public class Cadete
     public string? Telefono { get => telefono; set => telefono = value; }
 
     //metodos
+
+    public void AgregarPedido(Pedido pedidoNuevo)
+    {
+        listaPedidos.Add(pedidoNuevo);
+    }
+
+    public void EliminarPedido(Pedido pedidoEliminado, int numero)
+    {
+        foreach (var pedido in listaPedidos)
+        {
+            if (numero == pedido.Numero)
+            {
+                listaPedidos.Remove(pedido);
+                break;
+            }
+        }
+    }
 
     public void CambiarEstado(int numeroPedido, int opcion)
     {
