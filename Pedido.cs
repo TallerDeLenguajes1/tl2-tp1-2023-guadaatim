@@ -51,25 +51,23 @@ public class Pedido
         return cliente.DatosReferenciaDireccion;
     } 
 
-        public void CambiarEstado()
+    public void CambiarEstado()
     {
        
-        if (Estado == Estado.Pendiente )
+        if (estado == Estado.Pendiente )
         {
-            Estado = Estado.Entregado;
+            estado = Estado.Entregado;
 
         } else
         {
            
         }
 
-         public void CancelarPedido()
+    }
+   public void CancelarPedido()
     {
        
-        this.Estado = Estado.Cancelado;
-
-        
+        this.estado = Estado.Cancelado;
            
-        }
-    } //cancelar pedido metodo
-}
+    }
+} 
