@@ -19,8 +19,6 @@ public class Cadeteria
 
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-   // public List<Cadete>? ListadoCadetes { get => listadoCadetes; set => listadoCadetes = value; }
-
     
     //metodos
     public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, int telefono, string datosReferenciadeDireccion, int idCadete)
