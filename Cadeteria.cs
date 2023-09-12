@@ -53,7 +53,4 @@ public class Cadeteria
         }
     }
 
-    // public string Informe(float total, int cantidad)
-    // {
-    // }
 }
