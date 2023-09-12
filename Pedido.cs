@@ -24,7 +24,7 @@ public class Pedido
         this.numero = numero;
         this.observacion = observacion;
         this.cliente = cliente;
-        this.estado = estado;
+        estado = Estado.Pendiente;
     }
 
     public int Numero { get => numero;}
@@ -53,21 +53,15 @@ public class Pedido
 
     public void CambiarEstado()
     {
-       
         if (estado == Estado.Pendiente )
         {
             estado = Estado.Entregado;
 
-        } else
-        {
-           
-        }
-
+        } 
     }
+
    public void CancelarPedido()
     {
-       
-        this.estado = Estado.Cancelado;
-           
+        this.estado = Estado.Cancelado;      
     }
 } 

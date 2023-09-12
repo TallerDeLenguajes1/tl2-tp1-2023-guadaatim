@@ -49,13 +49,13 @@ public class Cadete
 
     public void CambiarEstado(int numeroPedido)
     {
-        Pedido pedidoACambiar = new Pedido();
+        Pedido pedidoACambiar = new();
 
-        foreach (var pedidoelegido in listaPedidos)
+        foreach (var pedidoElegido in listaPedidos)
         {
-            if (numeroPedido == pedidoelegido.Numero)
+            if (numeroPedido == pedidoElegido.Numero)
             {
-                pedidoACambiar = pedidoelegido;
+                pedidoElegido.CambiarEstado();
                 break;
             }
         }
