@@ -3,6 +3,7 @@ using EspacioCadete;
 using EspacioPedido;
 using EspacioCliente;
 using System.ComponentModel;
+using System.Data.Common;
 
 public class Cadeteria
 {
@@ -55,9 +56,11 @@ public class Cadeteria
         }
     }
 
-    public void Informe(List<Cadete> listadoCadetes)
+    public void Informe(List<Cadete> listadoCadetes, int idCadete)
     {
-        Console.WriteLine("Informe");
+        Console.WriteLine("-------INFORME-------");
+        Console.WriteLine("Monto ganado: " + listadoCadetes[idCadete].JornalACobrar);
+        Console.WriteLine("Cantidad de envios: " + listadoCadetes[idCadete].cantidadEnvios);
     }
 
 }
