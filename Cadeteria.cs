@@ -40,17 +40,24 @@ public class Cadeteria
         }
     }
 
-    public void ReasignarPedido( Pedido pedidoAReasignar, int id)
+    public void ReasignarPedido(Pedido pedidoAReasignar, int idCadete1, int idCadete2)
     {
-        foreach (var  cadete in listadoCadetes)
+        foreach (var cadete in listadoCadetes)
         {
-            if (id == cadete.Id)
+            if (idCadete1 == cadete.Id)
             {
-                cadete.AgregarPedido(pedidoAReasignar);
-                cadete.EliminarPedido(pedidoAReasignar, pedidoAReasignar.Numero);
-                break;
+                cadete.EliminarPedido(pedidoAReasignar.Numero);
+            }
+            if (idCadete2 == cadete.Id)
+            {
+                cadete.AgregarPedido(pedidoAReasignar);                
             }
         }
+    }
+
+    public void Informe(List<Cadete> listadoCadetes)
+    {
+        Console.WriteLine("Informe");
     }
 
 }
