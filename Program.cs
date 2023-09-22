@@ -60,7 +60,7 @@ internal class Program
             
             Console.WriteLine("Bienvenido!!!");
             int opcion = 0;
-            
+
             do
             {
                 
@@ -125,7 +125,7 @@ internal class Program
                             cadeteriaElegida.ReasignarPedido(cadeteElegido1.ListaPedidos[idPedidoReasignar], idCad1, idCad2);
                             break;
                         case 4:
-                            cadeteriaElegida.Informe(listadoCadetes);
+                            cadeteriaElegida.Informe(listadoCadetes, 1);
                             break;
                         default:
                             break;
