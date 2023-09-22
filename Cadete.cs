@@ -27,21 +27,22 @@ public class Cadete
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Direccion { get => direccion; set => direccion = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
+    public List<Pedido>? ListaPedidos { get => listaPedidos; }
 
     //metodos
 
     public void AgregarPedido(Pedido pedidoNuevo)
     {
-        listaPedidos.Add(pedidoNuevo);
+        ListaPedidos.Add(pedidoNuevo);
     }
 
-    public void EliminarPedido(Pedido pedidoEliminado, int numero)
+    public void EliminarPedido(int numero)
     {
-        foreach (var pedido in listaPedidos)
+        foreach (var pedido in ListaPedidos)
         {
             if (numero == pedido.Numero)
             {
-                listaPedidos.Remove(pedido);
+                ListaPedidos.Remove(pedido);
                 break;
             }
         }
@@ -51,7 +52,7 @@ public class Cadete
     {
         Pedido pedidoACambiar = new();
 
-        foreach (var pedidoElegido in listaPedidos)
+        foreach (var pedidoElegido in ListaPedidos)
         {
             if (numeroPedido == pedidoElegido.Numero)
             {
@@ -65,7 +66,7 @@ public class Cadete
     {
         float total = 0;
 
-        foreach (var pedidito in listaPedidos)
+        foreach (var pedidito in ListaPedidos)
         {
             if (pedidito.Estado == Estado.Entregado)
             {
@@ -80,7 +81,7 @@ public class Cadete
     {
         int cantidad = 0;
 
-        foreach (var pedido in listaPedidos)
+        foreach (var pedido in ListaPedidos)
         {
             if (pedido.Estado == Estado.Entregado)
             {
