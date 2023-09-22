@@ -9,7 +9,7 @@ public class Cadete
     private string? nombre;
     private string? direccion;
     private string? telefono;
-    private List<Pedido>? listaPedidos;
+    private List<Pedido>? listapedidos;
 
     public Cadete()
     {
@@ -21,15 +21,14 @@ public class Cadete
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
+        listapedidos = new List<Pedido>();
     }
 
     public int Id { get => id; set => id = value; }
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Direccion { get => direccion; set => direccion = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-    public List<Pedido>? ListaPedidos { get => listaPedidos; }
-
-    //metodos
+    public List<Pedido>? ListaPedidos { get => listapedidos; set => listapedidos = value; }
 
     public void AgregarPedido(Pedido pedidoNuevo)
     {
