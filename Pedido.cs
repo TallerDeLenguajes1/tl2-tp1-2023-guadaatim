@@ -1,5 +1,6 @@
 namespace EspacioPedido;
 using EspacioCliente;
+using EspacioCadete;
 
 public enum Estado
 {
@@ -14,6 +15,7 @@ public class Pedido
     private string? observacion;
     private Cliente? cliente;
     private Estado estado;
+    private Cadete cadete;
 
     public Pedido()
     {
@@ -25,11 +27,13 @@ public class Pedido
         this.observacion = observacion;
         this.cliente = cliente;
         estado = Estado.Pendiente;
+        Cadete = new Cadete();
     }
 
     public int Numero { get => numero;}
     public string? Observacion { get => observacion; }
     public Estado Estado { get => estado;}
+    public Cadete Cadete { get => cadete; set => cadete = value; }
 
     public void AgregarCliente(Cliente clienteNuevo)
     {

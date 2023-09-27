@@ -10,56 +10,123 @@ public class Cadeteria
     private string? nombre;
     private string? telefono;
     private List<Cadete>? listadoCadetes;
+    private List<Pedido> listadoPedidos;
 
     public Cadeteria(string nombre, string telefono, List<Cadete> listadoCadetes)
     {
         this.listadoCadetes = listadoCadetes;
         this.nombre = nombre;
         this.telefono = telefono;
+        listadoPedidos = new List<Pedido>();
     }
 
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-    
+
     //metodos
     public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, int telefono, string datosReferenciadeDireccion, int idCadete)
     {
         Cliente clienteNuevo = new Cliente(nombre, direccion, telefono, datosReferenciadeDireccion);
         Pedido pedidoNuevo = new Pedido(num, observacion, clienteNuevo);
 
-        AsignarPedido(pedidoNuevo, idCadete);
-                                                                                                          
+        AgregarPedido(pedidoNuevo);
+        AsignarCadeteAPedido(pedidoNuevo.Numero, idCadete);
     }
-    public void AsignarPedido(Pedido nuevoPedido, int idCadete)
+
+    // public void AsignarPedido(Pedido nuevoPedido, int idCadete)
+    // {
+    //     foreach (var cadete in listadoCadetes)
+    //     {
+    //         if (idCadete == cadete.Id)
+    //         {
+    //             cadete.AgregarPedido(nuevoPedido);
+    //         }
+    //     }
+    // }
+
+    // public void ReasignarPedido(int idPedidoAReasignar, int idCadete)
+    // {
+        
+    //     foreach (var pedido in listadoPedidos)
+    //     {
+    //         if (pedido.Numero == idPedidoAReasignar)
+    //         {
+    //             AsignarCadeteAPedido(idPedidoAReasignar, idCadete);
+    //             break;
+    //         }
+    //     }
+    // }
+
+    public void AgregarPedido(Pedido pedidoNuevo)
     {
-        foreach (var cadete in listadoCadetes)
+        listadoPedidos.Add(pedidoNuevo);
+    }
+
+    public void AsignarCadeteAPedido(int idPedido, int idCadete)
+    {
+        IEnumerable<Cadete> cadeteQuery =
+            from cadeteElegido in listadoCadetes
+            where cadeteElegido.Id == idCadete
+            select cadeteElegido;
+
+        foreach (var pedido in listadoPedidos)
         {
-            if (idCadete == cadete.Id)
+            if (pedido.Numero == idPedido)
             {
-                cadete.AgregarPedido(nuevoPedido);
+                pedido.Cadete = cadeteQuery.First();
             }
         }
     }
 
-    public void ReasignarPedido(Pedido pedidoAReasignar, int idCadete1, int idCadete2)
+        public Pedido BuscarPedido(int idPedido)
     {
-        foreach (var cadete in listadoCadetes)
+        Pedido pedidoBuscado = new Pedido();
+        
+        foreach (var p in listadoPedidos)
         {
-            if (idCadete1 == cadete.Id)
+            if (p.Numero == idPedido)
             {
-                cadete.EliminarPedido(pedidoAReasignar.Numero);
-            }
-            if (idCadete2 == cadete.Id)
-            {
-                cadete.AgregarPedido(pedidoAReasignar);                
+                pedidoBuscado = p;
+                break;
             }
         }
+
+        return pedidoBuscado;
+    }
+
+    public void EliminarPedido(int idPedido)
+    {
+        foreach (var pedido in listadoPedidos)
+        {
+            if (pedido.Numero == idPedido)
+            {
+                listadoPedidos.Remove(pedido);
+                break;
+            }
+        }
+    }
+
+    public float JornalACobrar(int idCadete)
+    {
+        float total = 0;
+
+        foreach (var pedido in listadoPedidos)
+        {
+            if (pedido.Cadete.Id == idCadete)
+            {
+                if (pedido.Estado == Estado.Entregado)
+                {
+                    total += 500;
+                }
+            }
+        }
+        return total;
     }
 
     public void Informe(List<Cadete> listadoCadetes, int idCadete)
     {
         Console.WriteLine("-------INFORME-------");
-        Console.WriteLine("Monto ganado: " + listadoCadetes[idCadete].JornalACobrar);
-        Console.WriteLine("Cantidad de envios: " + listadoCadetes[idCadete].cantidadEnvios);
+        //Console.WriteLine("Monto ganado: " + listadoCadetes[idCadete].JornalACobrar);
+        //Console.WriteLine("Cantidad de envios: " + listadoCadetes[idCadete].cantidadEnvios);
     }
 }
