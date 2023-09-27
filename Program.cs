@@ -7,40 +7,23 @@ using EspacioCadete;
 using EspacioCadeteria;
 using EspacioCliente;
 using EspacioPedido;
+using EspacioAccesoADatos;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        string strCadeterias = File.ReadAllText("Cadeterias.csv");
-        string[] strCadeteriasSeparada = strCadeterias.Split(',', '\r');
-        List<Cadete> listadoCadetes = new List<Cadete>();
-        int i = 0;
+        AccesoADatos HelperADD = new AccesoADatos();
 
-        StreamReader strCadetes = new StreamReader("Cadetes.csv");
-        string? linea;
-
-        while ((linea = strCadetes.ReadLine()) != null)
-        {
-            string[] fila = linea.Split(",").ToArray();
-
-            if (i > 0)
-            {
-                Cadete cadeteAgregar = new Cadete(Convert.ToInt32(fila[0]), fila[1], fila[2], fila[3]);
-                listadoCadetes.Add(cadeteAgregar);
-            }
-
-            i++;
-        }
-
-        i = 1;
-        int j = 3;
+        List<Cadete> listadoCadetes = HelperADD.LeerArchivoCadetes("Cadetes.csv");
+        List<Cadeteria> listadoCadeterias = HelperADD.LeerArchivoCadeteria("Cadeterias.csv", listadoCadetes);
 
         Console.WriteLine("Seleccione una cadeteria: ");
-        while (strCadeteriasSeparada.Length >= j)
+        
+        int i = 0;
+        foreach (var cadeteria in listadoCadeterias)
         {
-            Console.WriteLine(i + strCadeteriasSeparada[j]);
-            j += 2;
+            Console.WriteLine(i + cadeteria.Nombre);
             i++;
         }
 
@@ -49,10 +32,8 @@ internal class Program
 
         if (control)
         {
-            opcionC = ElegirOpcion(opcionC);
-
-            Cadeteria cadeteriaElegida = new Cadeteria(strCadeteriasSeparada[opcionC], "11111", listadoCadetes);
-            Console.WriteLine("Cadeteria elegida: " + strCadeteriasSeparada[opcionC]);
+            Cadeteria cadeteriaElegida = listadoCadeterias[opcionC];
+            Console.WriteLine("Cadeteria elegida: " + cadeteriaElegida.Nombre);
             
             Console.WriteLine("Bienvenido!!!");
             int opcion = 0;
@@ -134,31 +115,5 @@ internal class Program
 
             } while (opcion != 5);
         }
-    }
-
-    private static int ElegirOpcion(int op)
-    {
-        switch (op)
-        {
-            case 1:
-                op = 3;
-                break;
-            case 2:
-                op = 5;
-                break;
-            case 3:
-                op = 7;
-                break;
-            case 4:
-                op = 9;
-                break;
-            case 5:
-                op = 11;
-                break;
-            default:
-                break;
-        }
-
-        return op;
     }
 }
