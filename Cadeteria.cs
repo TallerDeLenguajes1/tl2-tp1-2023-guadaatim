@@ -62,5 +62,4 @@ public class Cadeteria
         Console.WriteLine("Monto ganado: " + listadoCadetes[idCadete].JornalACobrar);
         Console.WriteLine("Cantidad de envios: " + listadoCadetes[idCadete].cantidadEnvios);
     }
-
 }

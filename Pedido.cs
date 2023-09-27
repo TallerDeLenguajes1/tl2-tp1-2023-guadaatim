@@ -56,7 +56,6 @@ public class Pedido
         if (estado == Estado.Pendiente )
         {
             estado = Estado.Entregado;
-
         } 
     }
 

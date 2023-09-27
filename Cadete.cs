@@ -28,20 +28,19 @@ public class Cadete
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Direccion { get => direccion; set => direccion = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-    public List<Pedido>? ListaPedidos { get => listapedidos; set => listapedidos = value; }
 
     public void AgregarPedido(Pedido pedidoNuevo)
     {
-        ListaPedidos.Add(pedidoNuevo);
+        listapedidos.Add(pedidoNuevo);
     }
 
     public void EliminarPedido(int numero)
     {
-        foreach (var pedido in ListaPedidos)
+        foreach (var pedido in listapedidos)
         {
             if (numero == pedido.Numero)
             {
-                ListaPedidos.Remove(pedido);
+                listapedidos.Remove(pedido);
                 break;
             }
         }
@@ -51,7 +50,7 @@ public class Cadete
     {
         Pedido pedidoACambiar = new();
 
-        foreach (var pedidoElegido in ListaPedidos)
+        foreach (var pedidoElegido in listapedidos)
         {
             if (numeroPedido == pedidoElegido.Numero)
             {
@@ -65,7 +64,7 @@ public class Cadete
     {
         float total = 0;
 
-        foreach (var pedidito in ListaPedidos)
+        foreach (var pedidito in listapedidos)
         {
             if (pedidito.Estado == Estado.Entregado)
             {
@@ -80,7 +79,7 @@ public class Cadete
     {
         int cantidad = 0;
 
-        foreach (var pedido in ListaPedidos)
+        foreach (var pedido in listapedidos)
         {
             if (pedido.Estado == Estado.Entregado)
             {
@@ -90,7 +89,20 @@ public class Cadete
 
         return cantidad;
     }
-}
 
-//clase hijo puede tener el constructor de la clase padre
-//si no redefino el cosntructor toma el de la clase padre
+    public Pedido BuscarPedido(int idPedido)
+    {
+        Pedido pedidoBuscado = new Pedido();
+
+        foreach (var p in listapedidos)
+        {
+            if (idPedido == p.Numero)
+            {
+                pedidoBuscado = p;
+                break;
+            }
+        }
+
+        return pedidoBuscado;
+    }
+}
