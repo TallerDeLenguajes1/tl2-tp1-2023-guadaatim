@@ -95,28 +95,22 @@ internal class Program
                             Console.WriteLine("-------PEDIDO REALIZADO-------");
                             break;
                         case 2:
-                            Console.WriteLine("Ingrese el id del cadete: ");
-                            int idCad = Convert.ToInt32(Console.ReadLine());
-                            Cadete cadeteElegido = listadoCadetes[idCad];
-
                             Console.WriteLine("Ingrese el id del pedido que desea modificar: ");
                             int idPedido = Convert.ToInt32(Console.ReadLine());
+                            
+                            Pedido pedidoAModificar = cadeteriaElegida.BuscarPedido(idPedido);
+                            pedidoAModificar.CambiarEstado();
 
-                            cadeteElegido.CambiarEstado(idPedido);
                             Console.WriteLine("-------ESTADO DE PEDIDO CAMBIADO-------");
                             break;
                         case 3:
                             Console.WriteLine("Ingrese el id del cadete: ");
-                            int idCad1 = Convert.ToInt32(Console.ReadLine());
-                            Cadete cadeteElegido1 = listadoCadetes[idCad1];
+                            int idCadete = Convert.ToInt32(Console.ReadLine());
                             
-                            Console.WriteLine("Ingrese el id del otro cadete: ");
-                            int idCad2 = Convert.ToInt32(Console.ReadLine());
-
                             Console.WriteLine("Ingrese el id del pedido que desea reasignar: ");
                             int idPedidoReasignar = Convert.ToInt32(Console.ReadLine());
-                            
-                            cadeteriaElegida.ReasignarPedido(cadeteElegido1.BuscarPedido(idPedidoReasignar), idCad1, idCad2);
+                            cadeteriaElegida.AsignarCadeteAPedido(idPedidoReasignar, idCadete);
+
                             Console.WriteLine("-------PEDIDO REASIGNADO-------");
                             break;
                         case 4:
