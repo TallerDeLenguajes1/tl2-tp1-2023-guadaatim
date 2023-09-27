@@ -2,6 +2,7 @@
 // Console.WriteLine("Hello, World!");
 
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 using EspacioCadete;
 using EspacioCadeteria;
 using EspacioCliente;
@@ -117,6 +118,7 @@ internal class Program
                             int idPedidoReasignar = Convert.ToInt32(Console.ReadLine());
                             
                             cadeteriaElegida.ReasignarPedido(cadeteElegido1.BuscarPedido(idPedidoReasignar), idCad1, idCad2);
+                            cadeteElegido1.EliminarPedido(idPedidoReasignar);
                             Console.WriteLine("-------PEDIDO REASIGNADO-------");
                             break;
                         case 4:
