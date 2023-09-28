@@ -46,16 +46,13 @@ public class Cadeteria
 
     public void AsignarCadeteAPedido(int idPedido, int idCadete)
     {
-        IEnumerable<Cadete> cadeteQuery =
-            from cadeteElegido in listadoCadetes
-            where cadeteElegido.Id == idCadete
-            select cadeteElegido;
+        Cadete? cadeteElegido = listadoCadetes.Find(c => c.Id == idCadete);
 
         foreach (var pedido in listadoPedidos)
         {
             if (pedido.Numero == idPedido)
             {
-                pedido.Cadete = cadeteQuery.First();
+                pedido.Cadete = cadeteElegido;
             }
         }
     }
@@ -105,10 +102,16 @@ public class Cadeteria
         return total;
     }
 
+    public int CantidadEnviosPorCadete(int idCadete)
+    {
+        int total = listadoPedidos.Count(p => p.Cadete.Id == idCadete && p.Estado == Estado.Entregado);
+        return total;
+    }
+
     public void Informe(List<Cadete> listadoCadetes, int idCadete)
     {
         Console.WriteLine("-------INFORME-------");
-        //Console.WriteLine("Monto ganado: " + listadoCadetes[idCadete].JornalACobrar);
-        //Console.WriteLine("Cantidad de envios: " + listadoCadetes[idCadete].cantidadEnvios);
+        Console.WriteLine("Monto ganado: " + JornalACobrar(idCadete));
+        Console.WriteLine("Cantidad de envios: " + CantidadEnviosPorCadete(idCadete));
     }
 }

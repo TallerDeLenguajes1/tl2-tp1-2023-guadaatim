@@ -12,8 +12,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        List<Cadete> listadoCadetes = new();
-        List<Cadeteria> listadoCadeterias = new();
+        List<Cadete> listadoCadetes;
+        List<Cadeteria> listadoCadeterias;
 
         Console.WriteLine("Bienvenido!!");
         Console.WriteLine("Seleccione el tipo de archivo que desea leer: ");
@@ -53,7 +53,7 @@ internal class Program
             cadeteriaElegida.AgregarCadetes(listadoCadetes);
 
             Console.WriteLine("Cadeteria elegida: " + cadeteriaElegida.Nombre);
-            int opcion = 0;
+            int opcion;
 
             do
             {

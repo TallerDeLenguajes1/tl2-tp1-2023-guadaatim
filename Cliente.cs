@@ -2,7 +2,6 @@ namespace EspacioCliente;
 
 public class Cliente
 {
-
     private string? nombre;
     private string? direccion;
     private int telefono;
@@ -20,5 +19,4 @@ public class Cliente
     public string? Direccion { get => direccion; }
     public int Telefono { get => telefono; }
     public string? DatosReferenciaDireccion { get => datosReferenciaDireccion; }
-
 }

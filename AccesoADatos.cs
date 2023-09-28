@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace EspacioAccesoADatos;
 
-public class AccesoADatos
+public abstract class AccesoADatos
 {
     public virtual List<Cadete> LeerArchivoCadetes(string nombre)
     {

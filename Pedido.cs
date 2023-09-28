@@ -15,7 +15,7 @@ public class Pedido
     private string? observacion;
     private Cliente? cliente;
     private Estado estado;
-    private Cadete cadete;
+    private Cadete? cadete;
 
     public Pedido()
     {
@@ -33,7 +33,7 @@ public class Pedido
     public int Numero { get => numero;}
     public string? Observacion { get => observacion; }
     public Estado Estado { get => estado;}
-    public Cadete Cadete { get => cadete; set => cadete = value; }
+    public Cadete? Cadete { get => cadete; set => cadete = value; }
 
     public void AgregarCliente(Cliente clienteNuevo)
     {
@@ -65,6 +65,6 @@ public class Pedido
 
    public void CancelarPedido()
     {
-        this.estado = Estado.Cancelado;      
+        estado = Estado.Cancelado;      
     }
 } 

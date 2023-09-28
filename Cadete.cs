@@ -26,19 +26,4 @@ public class Cadete
     public string? Nombre { get => nombre; set => nombre = value; }
     public string? Direccion { get => direccion; set => direccion = value; }
     public string? Telefono { get => telefono; set => telefono = value; }
-
-    // public int cantidadEnvios()
-    // {
-    //     int cantidad = 0;
-
-    //     foreach (var pedido in listapedidos)
-    //     {
-    //         if (pedido.Estado == Estado.Entregado)
-    //         {
-    //             cantidad++;
-    //         }
-    //     }
-
-    //     return cantidad;
-    // }
 }
