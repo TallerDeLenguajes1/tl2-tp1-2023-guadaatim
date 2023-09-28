@@ -1,11 +1,25 @@
 using EspacioCadete;
 using EspacioCadeteria;
+using System.Text.Json;
 
 namespace EspacioAccesoADatos;
 
 public class AccesoADatos
 {
-    public List<Cadete> LeerArchivoCadetes(string nombre)
+    public virtual List<Cadete> LeerArchivoCadetes(string nombre)
+    {
+        return null;
+    }
+
+    public virtual List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    {
+        return null;
+    }
+}
+
+public class AccesoCSV : AccesoADatos
+{
+    public override List<Cadete> LeerArchivoCadetes(string nombre)
     {
         List<Cadete> listadoCadetes = new List<Cadete>();
 
@@ -29,7 +43,7 @@ public class AccesoADatos
         return listadoCadetes;
     }
 
-    public List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    public override List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
     {
         List<Cadeteria> listadoCadeterias = new List<Cadeteria>();
 
@@ -54,9 +68,31 @@ public class AccesoADatos
     }
 }
 
-public class AccesoCSV : AccesoADatos
+public class AccesoJSON : AccesoADatos
 {
+    public override List<Cadete> LeerArchivoCadetes(string nombre)
+    {
+        if (File.Exists(nombre))
+        {
+            string? jsonstring = File.ReadAllText(nombre);
+            List<Cadete>? listadoCadetes = JsonSerializer.Deserialize<List<Cadete>>(jsonstring);
+            return listadoCadetes;
+        } else
+        {
+            return null;
+        }
+    }
 
+    public override List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    {
+        if (File.Exists(nombre))
+        {
+            string? jsonstring = File.ReadAllText(nombre);
+            List<Cadeteria>? listadoCadeterias = JsonSerializer.Deserialize<List<Cadeteria>>(jsonstring);
+            return listadoCadeterias;
+        } else
+        {
+            return null;
+        }
+    }
 }
-
-public class AccesoJSON : AccesoADatos;
