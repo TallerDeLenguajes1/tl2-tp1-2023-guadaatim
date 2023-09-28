@@ -1,0 +1,62 @@
+[
+ {
+  "id": 1,
+  "nombre": "Luis",
+  "direccion": "España 250",
+  "telefono": 3814456745
+ },
+ {
+  "id": 2,
+  "nombre": "Hugo",
+  "direccion": "Salta 600",
+  "telefono": 381994854
+ },
+ {
+  "id": 3,
+  "nombre": "Santino",
+  "direccion": "Godoy Cruz 387",
+  "telefono": 3813329087
+ },
+ {
+  "id": 4,
+  "nombre": "Mario",
+  "direccion": "Av. Mate de Luna 2000",
+  "telefono": 3816783241
+ },
+ {
+  "id": 5,
+  "nombre": "Noemi",
+  "direccion": "Colombia 3456",
+  "telefono": 3813342123
+ },
+ {
+  "id": 6,
+  "nombre": "Sofia",
+  "direccion": "Bolviia 345",
+  "telefono": 3813454566
+ },
+ {
+  "id": 7,
+  "nombre": "Lucia",
+  "direccion": "Junin 200",
+  "telefono": 3816757986
+ },
+ {
+  "id": 8,
+  "nombre": "Jimena",
+  "direccion": "Santiago 123",
+  "telefono": 3812346578
+ },
+ {
+  "id": 9,
+  "nombre": "Hernan",
+  "direccion": "Peru 456",
+  "telefono": 3814534586
+ },
+ {
+  "id": 10,
+  "nombre": "Romina",
+  "direccion": "Brasil 254",
+  "telefono": 3813458656
+ }
+]
