@@ -12,17 +12,35 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        AccesoADatos HelperADD = new AccesoADatos();
+        List<Cadete> listadoCadetes = new();
+        List<Cadeteria> listadoCadeterias = new();
 
-        List<Cadete> listadoCadetes = HelperADD.LeerArchivoCadetes("Cadetes.csv");
-        List<Cadeteria> listadoCadeterias = HelperADD.LeerArchivoCadeteria("Cadeterias.csv", listadoCadetes);
+        Console.WriteLine("Bienvenido!!");
+        Console.WriteLine("Seleccione el tipo de archivo que desea leer: ");
+        Console.WriteLine("1 - CSV");
+        Console.WriteLine("2 - Json");
+
+        int archivo = Convert.ToInt32(Console.ReadLine());
+
+        if (archivo == 1)
+        {
+            AccesoCSV HelperADD = new AccesoCSV();
+            listadoCadetes = HelperADD.LeerArchivoCadetes("Cadetes.csv");
+            listadoCadeterias = HelperADD.LeerArchivoCadeteria("Cadeterias.csv");
+
+        } else
+        {
+            AccesoJSON HelperADD = new AccesoJSON();
+            listadoCadetes = HelperADD.LeerArchivoCadetes("Cadetes.json");
+            listadoCadeterias = HelperADD.LeerArchivoCadeteria("Cadeterias.json");
+        }
 
         Console.WriteLine("Seleccione una cadeteria: ");
         
         int i = 0;
         foreach (var cadeteria in listadoCadeterias)
         {
-            Console.WriteLine(i + cadeteria.Nombre);
+            Console.WriteLine(i + " - " + cadeteria.Nombre);
             i++;
         }
 
@@ -32,9 +50,9 @@ internal class Program
         if (control)
         {
             Cadeteria cadeteriaElegida = listadoCadeterias[opcionC];
+            cadeteriaElegida.AgregarCadetes(listadoCadetes);
+
             Console.WriteLine("Cadeteria elegida: " + cadeteriaElegida.Nombre);
-            
-            Console.WriteLine("Bienvenido!!!");
             int opcion = 0;
 
             do
