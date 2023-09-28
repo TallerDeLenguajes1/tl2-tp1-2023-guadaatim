@@ -11,7 +11,7 @@ public class AccesoADatos
         return null;
     }
 
-    public virtual List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    public virtual List<Cadeteria> LeerArchivoCadeteria(string nombre)
     {
         return null;
     }
@@ -43,7 +43,7 @@ public class AccesoCSV : AccesoADatos
         return listadoCadetes;
     }
 
-    public override List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    public override List<Cadeteria> LeerArchivoCadeteria(string nombre)
     {
         List<Cadeteria> listadoCadeterias = new List<Cadeteria>();
 
@@ -57,7 +57,7 @@ public class AccesoCSV : AccesoADatos
 
             if (i > 0)
             {
-                Cadeteria cadeteriaAgregar = new Cadeteria(fila[1], "111", listadoCadetes);
+                Cadeteria cadeteriaAgregar = new Cadeteria(fila[1], "111");
                 listadoCadeterias.Add(cadeteriaAgregar);
             }
 
@@ -83,7 +83,7 @@ public class AccesoJSON : AccesoADatos
         }
     }
 
-    public override List<Cadeteria> LeerArchivoCadeteria(string nombre, List<Cadete> listadoCadetes)
+    public override List<Cadeteria> LeerArchivoCadeteria(string nombre)
     {
         if (File.Exists(nombre))
         {
