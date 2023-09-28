@@ -12,11 +12,11 @@ public class Cadeteria
     private List<Cadete>? listadoCadetes;
     private List<Pedido> listadoPedidos;
 
-    public Cadeteria(string nombre, string telefono, List<Cadete> listadoCadetes)
+    public Cadeteria(string nombre, string telefono)
     {
-        this.listadoCadetes = listadoCadetes;
         this.nombre = nombre;
         this.telefono = telefono;
+        listadoCadetes = new List<Cadete>();
         listadoPedidos = new List<Pedido>();
     }
 
@@ -24,6 +24,12 @@ public class Cadeteria
     public string? Telefono { get => telefono; set => telefono = value; }
 
     //metodos
+
+    public void AgregarCadetes(List<Cadete> listadoCadetes)
+    {
+        this.listadoCadetes = listadoCadetes;
+    }
+
     public void DarDeAltaPedido(int num, string observacion, string nombre, string direccion, int telefono, string datosReferenciadeDireccion, int idCadete)
     {
         Cliente clienteNuevo = new Cliente(nombre, direccion, telefono, datosReferenciadeDireccion);
@@ -32,30 +38,6 @@ public class Cadeteria
         AgregarPedido(pedidoNuevo);
         AsignarCadeteAPedido(pedidoNuevo.Numero, idCadete);
     }
-
-    // public void AsignarPedido(Pedido nuevoPedido, int idCadete)
-    // {
-    //     foreach (var cadete in listadoCadetes)
-    //     {
-    //         if (idCadete == cadete.Id)
-    //         {
-    //             cadete.AgregarPedido(nuevoPedido);
-    //         }
-    //     }
-    // }
-
-    // public void ReasignarPedido(int idPedidoAReasignar, int idCadete)
-    // {
-        
-    //     foreach (var pedido in listadoPedidos)
-    //     {
-    //         if (pedido.Numero == idPedidoAReasignar)
-    //         {
-    //             AsignarCadeteAPedido(idPedidoAReasignar, idCadete);
-    //             break;
-    //         }
-    //     }
-    // }
 
     public void AgregarPedido(Pedido pedidoNuevo)
     {
