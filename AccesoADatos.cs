@@ -1,5 +1,6 @@
 using EspacioCadete;
 using EspacioCadeteria;
+using System.ComponentModel;
 using System.Text.Json;
 
 namespace EspacioAccesoADatos;
