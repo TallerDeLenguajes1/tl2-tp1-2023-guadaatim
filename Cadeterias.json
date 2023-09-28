@@ -1,22 +1,22 @@
 [
  {
-  "id": 1,
-  "nombre": "Dudu"
+  "Nombre": "Dudu",
+  "Telefono": "3817654758"
  },
  {
-  "id": 2,
-  "nombre": "RapiCadete"
+  "Nombre": "RapiCadete",
+  "Telefono": "381231243"
  },
  {
-  "id": 3,
-  "nombre": "AlToque"
+  "Nombre": "AlToque",
+  "Telefono": "3816473845"
  },
  {
-  "id": 4,
-  "nombre": "CadeteExpress"
+  "Nombre": "CadeteExpress",
+  "Telefono": "3815098070"
  },
  {
-  "id": 5,
-  "nombre": "SuperCadete"
+  "Nombre": "SuperCadete",
+  "Telefono": "3812304056"
  }
 ]
